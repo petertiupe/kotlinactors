@@ -3,26 +3,34 @@ package de.tiupe.coroutinestutorial
 import kotlinx.coroutines.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-
+/*
+* In dieser Klasse werden mehere Beispiele gezeigt, die zur Einführung
+* in die Begriffe Scope, Context und die Builder dienen.
+* Am verständlichsten ist es, wenn in der main-Methode nur jeweils
+* eine Methode aufgerufen und ihr Verhalten untersucht wird.
+* */
 fun main(args: Array<String>) {
-    // exampleBlocking()
-    // exampleBlockingDispatcher()
-    // exampleLaunchGlobal()
-    //exampleLaunchCoroutineScope()
+    /* exampleBlocking() */
+    exampleBlockingDispatcher()
+    /*
+    exampleLaunchGlobal()
+    exampleLaunchCoroutineScope()
     exampleWithContext()
+    */
 }
 
-suspend fun printlnDelayed(message: String) {
-    // Complex calculation
-    delay(1000)
-    println(message)
-}
 
 suspend fun calculateHardThings(startNum: Int): Int {
     delay(1000)
     return startNum * 10
 }
 
+/*
+* Die Funktion zeigt das Verhalten von runBlocking als blockende
+* Ausführung von suspending Functions. Die Funktionen, die aus
+* runBlocking heraus aufgerufen werden, werden nacheinander ausgeführt und es
+* wird jeweils auf die Ausführung der suspending-Function gewartet
+* */
 fun exampleBlocking() = runBlocking {
     println("one")
     printlnDelayed("two")
@@ -30,14 +38,23 @@ fun exampleBlocking() = runBlocking {
 }
 
 // Running on another thread but still blocking the main thread
+/*
+* Diese Funktion ist ein Beispiel dafür, dass runBlocking mit einem übergebenen
+* Dispatcher in einem anderen Thread läuft, jedoch immer noch blockend ist.
+* Die Ausgabe ist:
+*       one - from thread DefaultDispatcher-worker-1
+*       two - from thread DefaultDispatcher-worker-1
+*       three - from thread main
+* */
 fun exampleBlockingDispatcher(){
     runBlocking(Dispatchers.Default) {
         println("one - from thread ${Thread.currentThread().name}")
         printlnDelayed("two - from thread ${Thread.currentThread().name}")
     }
-    // Outside of runBlocking to show that it's running in the blocked main thread
+    // Diese Zeile wird außerhalb von runBlocking aufgerufen, um zu zeigen,
+    // dass die Zeile im blocked main thread läuft
+    // Auch diese Zeile läuft erst, wenn der runBlocking-Block durchgelaufen ist.
     println("three - from thread ${Thread.currentThread().name}")
-    // It still runs only after the runBlocking is fully executed.
 }
 
 fun exampleLaunchGlobal() = runBlocking {
@@ -102,4 +119,10 @@ fun exampleWithContext() = runBlocking {
 
     val endTime = System.currentTimeMillis()
     println("Time taken: ${endTime - startTime}")
+}
+
+suspend fun printlnDelayed(message: String) {
+    // Complex calculation
+    delay(1000)
+    println(message)
 }
