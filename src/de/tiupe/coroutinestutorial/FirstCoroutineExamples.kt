@@ -10,13 +10,12 @@ import java.util.concurrent.Executors
 * eine Methode aufgerufen und ihr Verhalten untersucht wird.
 * */
 fun main(args: Array<String>) {
-    /* exampleBlocking() */
+    /* exampleBlocking()
     exampleBlockingDispatcher()
-    /*
     exampleLaunchGlobal()
-    exampleLaunchCoroutineScope()
+    exampleLaunchCoroutineScope()*/
     exampleWithContext()
-    */
+
 }
 
 
@@ -56,7 +55,18 @@ fun exampleBlockingDispatcher(){
     // Auch diese Zeile läuft erst, wenn der runBlocking-Block durchgelaufen ist.
     println("three - from thread ${Thread.currentThread().name}")
 }
+/*
+Anhand der Ausgabe  erkennt man, dass launch einen eigenen Thread
+beginnt. Der Launch-Aufruf ist nicht mehr blockend für den ihn umgebenden Code.
+one - from thread main
+three - from thread main
+two - from thread DefaultDispatcher-worker-1
 
+In der Dokumentation findet man dazu folgenden Satz:
+        Launches a new coroutine without blocking the current thread
+        and returns a reference to the coroutine as a [Job].
+        The coroutine is cancelled when the resulting job is [cancelled][Job.cancel].
+*/
 fun exampleLaunchGlobal() = runBlocking {
     println("one - from thread ${Thread.currentThread().name}")
 
@@ -79,6 +89,28 @@ fun exampleLaunchGlobalWaiting() = runBlocking {
     job.join()
 }
 
+/*
+* In dieser Funktion geht es um ein Beispiel in dem gezeigt wird, wie man einen eigenen
+* Thread-Pool aufbauen kann. Der Thread-Pool selbst stammt aus dem Paket
+*
+*       package java.util.concurrent
+*
+* asCoroutineDispatcher ist eine Extension-Function auf dem ExecutorService und stellt
+*                       diesen lediglich als CoroutineDispatcher zur Verfügung. Der Dispatcher
+*                       selbst macht das was sein Name sagt:
+*                       "It  determines what thread or threads the corresponding coroutine
+*                        uses for its execution"
+*
+* Als Ergebnis liefert diese Funktion:
+*
+*       one - from thread main
+*       three - from thread main
+*       two - from thread pool-1-thread-1
+*
+* Die Ausgabe ist in diesem Beispiel nur zweitrangig. Da der Aufruf von
+* printDelayed durch das launch nicht blockend geschieht, läuft das Programm durch,
+* und wartet, bis die printDelayed Funktion auch gelaufen ist.
+* */
 fun exampleLaunchCoroutineScope() = runBlocking {
     println("one - from thread ${Thread.currentThread().name}")
 
@@ -107,6 +139,26 @@ fun exampleAsyncAwait() = runBlocking {
     println("Time taken: ${endTime - startTime}")
 }
 
+/*
+* In dieser Funktion wird vorgestellt, wie man mit drei Aufgaben parallel
+* abarbeiten lassen kann und anschließend die Ergebnisse zusammenfasst.
+*
+* Wieder gibt man dem withContext eine Funktion mit, die als Rückgabewert einen
+* Type T bekommt, in diesem Fall ein Int
+* Zur Erläuterung hier die Definition von withContext:
+*
+*            public suspend fun <T> withContext(
+*               context: CoroutineContext,
+*               block: suspend CoroutineScope.() -> T
+*            ): T
+*
+* Dem CoroutineScope wird mit einer Function-Extension ein Code-Block übergeben,
+* der einen Typ T zurückliefert. Genau diesen Typen wollen wir als Rückgabewert
+* haben, in diesem Fall also das Ergebnis von
+*
+*   calculateHardThings
+*
+* */
 fun exampleWithContext() = runBlocking {
     val startTime = System.currentTimeMillis()
 
