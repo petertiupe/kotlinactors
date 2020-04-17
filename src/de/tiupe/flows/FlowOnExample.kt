@@ -11,7 +11,7 @@ import kotlin.coroutines.coroutineContext
  * Dieses Beispiel zeigt, wie man die Ablaufumgebung für einen Flow steuern
  * kann.
  * */
-val flowA = flow {
+private val flowA = flow {
     println("Emitting coroutine -> $coroutineContext")
     emit("Tina")
     emit("Inken")
@@ -43,7 +43,7 @@ val flowA = flow {
  *
  */
 @ExperimentalCoroutinesApi
-val flowB = flowA.flowOn(Dispatchers.IO)
+private val flowB = flowA.flowOn(Dispatchers.IO)
 
 @ExperimentalCoroutinesApi
 fun main() = runBlocking {
