@@ -27,6 +27,9 @@ private fun String.isUpperCase() = all { it.isUpperCase() }
  * Man kan sie schreiben wie "normale" Sprache and und or sehen nicht mehr
  * aus wie Funktionsaufrufe sondern wie normale Sprache und das ist den
  * Infix-Funktionen zu verdanken.
+ *
+ * Die Ausgabe des Programms steht bereits hinter den einzelnen Programmzeilen als
+ * Kommentar.
  * */
 fun main() {
     val data = listOf("abc", "abcde", "ABCDE", "aBcD", "ab")
@@ -38,6 +41,7 @@ fun main() {
     println(data.count(!::isShort or String::isUpperCase)) // 2
 
     println(data.count(!(::isShort and String::isUpperCase))) // 5
+
 }
 
 
