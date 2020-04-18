@@ -132,6 +132,6 @@ Vergleichsoperatoren. Auch diese seien hier kurz aufgeführt:
 </table>
 
 ### Infix-Funktionen als weiteres Sprachmittel zum Aufbau einer DSL
-In der Datei InfixOperations kann man gut sehen, wie man Infix-Funktionen
+In der Datei InfixOperations kann man sehen, wie man Infix-Funktionen
 gut dafür nutzen kann, Funktionsaufrufe wie normale Sprache aussehen zu lassen.  
 Das Beispiel in der Datei sollte mit den Kommentaren selbsterklärend sein.
