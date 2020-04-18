@@ -26,9 +26,9 @@ operator fun String.times(n: Int)= repeat(n)
  * */
 operator fun <T> ((T) -> Boolean).not(): (T) -> Boolean = { !this(it) }
 
-fun isShort(s: String) = s.length<= 4
+private fun isShort(s: String) = s.length<= 4
 
-fun String.isUpperCase() = all { it.isUpperCase() }
+private fun String.isUpperCase() = all { it.isUpperCase() }
 
 //  fun adder1 Int.(Int) -> Int = { a -> this + a }
 

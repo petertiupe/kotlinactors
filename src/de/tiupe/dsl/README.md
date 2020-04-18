@@ -130,3 +130,8 @@ Vergleichsoperatoren. Auch diese seien hier kurz aufgeführt:
 </tr>
 </tbody>
 </table>
+
+### Infix-Funktionen als weiteres Sprachmittel zum Aufbau einer DSL
+In der Datei InfixOperations kann man gut sehen, wie man Infix-Funktionen
+gut dafür nutzen kann, Funktionsaufrufe wie normale Sprache aussehen zu lassen.  
+Das Beispiel in der Datei sollte mit den Kommentaren selbsterklärend sein.
