@@ -173,8 +173,8 @@ Hier am Beispiel a += b führt der Compiler folgende Schritte durch
 Wenn die Funktion auf der rechten Seite der Tabelle definiert ist und
 
 1 die entsprechende binäre Funktion, in diesem Fall + ebenfalls vorhanden ist => Fehler, da nicht eindeutig auswertbar  
-2 prüfe, dass der Typ der Funktion aus der Tabelle Unit ist (es wird die Originalvariable verändert), wenn nicht wird ein Fehler gemeldet
-3 erzeuge den Code für <code>a.plusAssign(b)</code> 
+2 prüfe, dass der Typ der Funktion aus der Tabelle Unit ist (es wird die Originalvariable verändert), wenn nicht wird ein Fehler gemeldet  
+3 erzeuge den Code für <code>a.plusAssign(b)</code>  
 
 Wenn die Funktion auf der rechten Seite der Tabelle nicht definiert ist  
 
