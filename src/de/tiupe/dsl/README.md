@@ -180,5 +180,5 @@ Wenn die Funktion auf der rechten Seite der Tabelle nicht definiert ist
 
 1. versuche den Code für <code>a = a + b</code> zu erzeugen, dabei wird auch geprüft, dass der Typ von a + b ein Subtyp von a ist.
 
-Achtung!: Assignements sind in Kotlin keine Ausdrücke, d.h. man kann die Zuweisung
+**Achtung!:** Assignements sind in Kotlin keine Ausdrücke, d.h. man kann die Zuweisung
 nicht an das Ende eines Codeblocks als Rückgabewert schreiben.
