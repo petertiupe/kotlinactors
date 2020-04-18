@@ -91,5 +91,42 @@ Und hier nun noch die binären Operatoren
 <td><code>a..b </code></td>
 <td><code>a.rangeTo(b)</code></td>
 </tr>
+<tr>
+<td><code>a in b</code></td>
+<td><code>b.contains(a)</code></td>
+</tr>
+<tr>
+<td><code>a !in b </code></td>
+<td><code>!b.contains(a)</code></td>
+</tr>
+</tbody>
+</table>
+
+Neben den bisher gezeigten Operatoren zum Überschreiben gibt es noch die 
+Vergleichsoperatoren. Auch diese seien hier kurz aufgeführt:
+<table>
+<thead>
+<tr>
+<th>Ausdruck</th>
+<th>wird übersetzt zu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a < b</code></td>
+<td><code>a.compareTo(b) < 0</code></td>
+</tr>
+<tr>
+<td><code>a <= b</code></td>
+<td><code>a.compareTo(b) <= 0</code></td>
+</tr>
+<tr>
+<td><code>a > b</code></td>
+<td><code>a.compareTo(b) > 0</code></td>
+</tr>
+<tr>
+<td><code>a >= b</code></td>
+<td><code>a.compareTo(b) >= 0</code></td>
+</tr>
 </tbody>
 </table>

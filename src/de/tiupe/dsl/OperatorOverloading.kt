@@ -22,7 +22,7 @@ operator fun String.times(n: Int)= repeat(n)
  *
  * In dem DSL-Kapitel steht dies, weil damit eine allgemeine generische Funktion als
  * Extension-Function existiert.
- * 
+ *
  * */
 operator fun <T> ((T) -> Boolean).not(): (T) -> Boolean = { !this(it) }
 
@@ -30,11 +30,7 @@ fun isShort(s: String) = s.length<= 4
 
 fun String.isUpperCase() = all { it.isUpperCase() }
 
-
-
 //  fun adder1 Int.(Int) -> Int = { a -> this + a }
-
-
 
 fun main() {
     /** Weil die Extension-Function mit operator markiert wurde, kann man jezt einfach
