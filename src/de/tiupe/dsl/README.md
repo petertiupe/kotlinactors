@@ -31,13 +31,65 @@ Der Vollständigkeit halber füge ich hier noch die Tabelle aus der Kotlin Dokum
 hinzu. Neben den binären gibt es auch einige unäre Operatoren, die man in Kotlin überladen
 kann.
 
-><table>
-
+<table>
+<thead>
 <tr>
-<td>Ausdruck</td>	<td>wird übersetzt zu</td>
-</tr>    
+<th>Ausdruck</th>
+<th>wird übersetzt zu</th>
+</tr> 
+</thead>   
+<tbody>
 <tr>
-<td>+a</td>	  <td>a.unaryPlus()</td>
+<td><code>+a</code></td>
+<td>a.unaryPlus()</td>
 </tr>  
-<tr><td>-a</td>	<td>a.unaryMinus()</td></tr>  
-<tr><td>!a</td>	<td>a.not()</td></tr>  
+<tr><td><code>-a</code></td>
+<td>a.unaryMinus()</td></tr>  
+<tr><td><code>!a</code></td>
+<td>a.not()</td></tr>
+<tr>
+<td><code>a++</code></td>
+<td><code>a.inc()</code></td>
+</tr>
+<tr>
+<td><code>a--</code></td>
+<td><code>a.dec()</code></td>
+</tr>
+</tbody>
+</table>
+
+Und hier nun noch die binären Operatoren  
+<table>
+<thead>
+<tr>
+<th>Ausdruck</th>
+<th>wird übersetzt zu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a + b</code></td>
+<td><code>a.plus(b)</code></td>
+</tr>
+<tr>
+<td><code>a - b</code></td>
+<td><code>a.minus(b)</code></td>
+</tr>
+<tr>
+<td><code>a * b</code></td>
+<td><code>a.times(b)</code></td>
+</tr>
+<tr>
+<td><code>a / b</code></td>
+<td><code>a.div(b)</code></td>
+</tr>
+<tr>
+<td><code>a % b</code></td>
+<td><code>a.rem(b)</code>, <code>a.mod(b)</code> (deprecated)</td>
+</tr>
+<tr>
+<td><code>a..b </code></td>
+<td><code>a.rangeTo(b)</code></td>
+</tr>
+</tbody>
+</table>
