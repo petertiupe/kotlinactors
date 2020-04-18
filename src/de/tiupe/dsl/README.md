@@ -26,3 +26,18 @@ schreibt.
 Die so erweiterte Klasse kann man dann nahtlos nutzen:
 
     println("\nPeter ist der Beste kann man nicht oft genug lesen" * 5)
+    
+Der Vollständigkeit halber füge ich hier noch die Tabelle aus der Kotlin Dokumentation
+hinzu. Neben den binären gibt es auch einige unäre Operatoren, die man in Kotlin überladen
+kann.
+
+><table>
+
+<tr>
+<td>Ausdruck</td>	<td>wird übersetzt zu</td>
+</tr>    
+<tr>
+<td>+a</td>	  <td>a.unaryPlus()</td>
+</tr>  
+<tr><td>-a</td>	<td>a.unaryMinus()</td></tr>  
+<tr><td>!a</td>	<td>a.not()</td></tr>  
