@@ -186,4 +186,13 @@ nicht an das Ende eines Codeblocks als Rückgabewert schreiben.
 ### Invocation
 Vals, die einen functional Type repräsentieren bekommen die invoke-Funktion automatisch als eines 
 ihrer Member. Für andere Klassen kann man die Invoke-Funktion als Extension-Function oder auch innerhalb
-einer Klasse definieren.
+einer Klasse definieren wie in dem folgenden Beispiel:   
+  
+   
+<code>operator fun <K, V> Map<K, V>.invoke(key: K) = get(key)</code>  
+  
+**Wichtig** ist zu beachten, dass es sich um einen operator handelt. Entfernt man das <code>opertor</code>-Schlüsselwort 
+kompiliert der Code nicht mehr.
+Es ist damit dann zum Beispiel möglich Syntax wie den Indexing-Operator ([]) bei Lists, Arrays und Maps auch für
+seine eigenen Klassen zu definieren. Außerdem kann man damit Konstruktoraufrufe, die eigentlich private sind 
+wieder öffentlich machen, aber so, dass im Hintergrund der richtige private Konstruktor aufgerufen wird. 

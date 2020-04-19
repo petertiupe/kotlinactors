@@ -8,6 +8,7 @@ package de.tiupe.dsl
  *
  *      nameDerMap(key) zu kommen.
  *
+ * Achtund, die Extension-Function ist eine Operator-Function
  * */
 operator fun <K, V> Map<K, V>.invoke(key: K) = get(key)
 
