@@ -6,6 +6,8 @@ package de.tiupe.dsl
  * */
 class TreeNode<T>(var data: T) {
     private val _children = arrayListOf<TreeNode<T>>()
+
+
     var parent: TreeNode<T>? = null
         // Es gibt einen Setter für den Parent, der private ist, weil man den
         // Parent unter eigener Kontrolle halten will. Der Parent wird immer dann
@@ -25,6 +27,10 @@ class TreeNode<T>(var data: T) {
         node.parent = null
     }
 
+  operator fun iterator() = _children.iterator()
+
+
+
     /*
     * Hier ist die get-Funktion, die für dien IndexingOperator entscheidend ist.
     * Sie wird aufgerufen, wenn auf den Index via [] zugegriffen wird.
@@ -42,6 +48,8 @@ class TreeNode<T>(var data: T) {
         _children[index] = node
     }
 }
+
+
 
 /**
  * Die main-Funktion zeigt die Aufrufe über die Indexing-Operators

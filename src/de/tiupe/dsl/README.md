@@ -205,9 +205,9 @@ er bei Strings, Lists, Arrays und Maps zur Verfügung steht. Je nachdem auf welc
 Seite der Code steht (links oder rechts vom Gleichheitszeichen) werden unterschiedliche
 Funktionen aufgerufen.
 
-<code>val petersA = arrayOf(1, 2, 3)</code>  
-<code>println(petersA[0]) // rechts vom Gleichheitszeichen wird get, hier also get(0) aufgerufen</code>  
-<code>petersA[0] = "10" // links vom Gleichheitszeichen wird set, hier also petersA.set(0,10) aufgerufen</code>  
+    val petersA = arrayOf(1, 2, 3)  
+    println(petersA[0]) // rechts vom Gleichheitszeichen wird get, hier also get(0) aufgerufen  
+    petersA[0] = "10" // links vom Gleichheitszeichen wird set, hier also petersA.set(0,10) aufgerufen  
 
 In der Datei IndexingOperatorsOnTreeNode ist ein Beispiel anhand eines Baumes implementiert.   
 **Wichtig:** wie bei der invoke-Funktion müssen auch die get- und die set- Funktion als Operator
@@ -233,5 +233,15 @@ Alles was man dafür tun muss, ist eine parameterlose "operator"-Funktion
         // Die Range geht von 1 bis 42
         println("Die Range geht von $a bis $b")
     }
+ 
+### Iteration mit for-Loops  
+In Kotlin kann man immer dann einen for-Loop auf einem Objekt aufrufen, wenn das Objekt die Iterator-Function
+als "operator"-Funtion kennt. Für die IndexingOperators habe ich eine Klasse TreeNode geschrieben. Will
+man diese mit einer Extension-Function mit einem for-Loop versehen, so reicht dafür die folgende
+Zeile aus:  
+
+    operator fun <T>TreeNode<T>.iterator() = children.iterator()
+
+
  
  
