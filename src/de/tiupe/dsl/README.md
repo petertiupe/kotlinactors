@@ -220,17 +220,17 @@ bzw.
 ### Destructuring  
 Man kann das Destructuring für gewöhnliche Klassen ebenfalls nutzen. 
 Alles was man dafür tun muss, ist eine parameterlose "operator"-Funktion
-<code>componentN</code>, wobei N durch einen Index zu ersetzen ist, dessen Zählung bei
+<code>componentN</code> zu schreiben, wobei N durch einen Index zu ersetzen ist, dessen Zählung bei
 1 beginnt, also <code>component1, component2....</code>.  
   
-><code>class PetersRange(val from: Int, val to: Int){  
-     operator fun component1() = this.from  
-     operator fun component2() = this.to  
- }  
-fun main(){    
-     val myRange = PetersRange(1, 42)    
-     val (a,b) = myRange  
-     println("Die Range geht von $a bis $b")
- }
- </code>
+    class PetersRange(val from: Int, val to: Int){  
+        operator fun component1() = this.from  
+        operator fun component2() = this.to  
+    }  
+    fun main(){    
+        val myRange = PetersRange(1, 42)    
+        val (a,b) = myRange  
+        println("Die Range geht von $a bis $b")
+    }
+ 
  
