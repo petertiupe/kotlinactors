@@ -193,10 +193,27 @@ einer Klasse definieren wie in dem folgenden Beispiel:
   
 **Wichtig** ist zu beachten, dass es sich um einen operator handelt. Entfernt man das <code>opertor</code>-Schlüsselwort 
 kompiliert der Code nicht mehr.
-Es ist damit dann zum Beispiel möglich Syntax wie den Indexing-Operator ([]) bei Lists, Arrays und Maps auch für
-seine eigenen Klassen zu definieren. Außerdem kann man damit Konstruktoraufrufe, die eigentlich private sind 
+Man kann mit der Invocation-Function Konstruktoraufrufe, die eigentlich private sind 
 wieder öffentlich machen, aber so, dass im Hintergrund der richtige private Konstruktor aufgerufen wird.  
   
 ><code>val petersMap = mapOf("A" to 1, "B" to 2, "X" to 10)</code>  
 ><code>println(petersMap("B")) // liefert 2                </code>
 
+### Indexing Operators ([])  
+Mit dem Indexing-Operator-Verhalten ahmt man Code durch eckige Klammern nach wie
+er bei Strings, Lists, Arrays und Maps zur Verfügung steht. Je nachdem auf welcher
+Seite der Code steht (links oder rechts vom Gleichheitszeichen) werden unterschiedliche
+Funktionen aufgerufen.
+
+<code>val petersA = arrayOf(1, 2, 3)</code>  
+<code>println(petersA[0]) // rechts vom Gleichheitszeichen wird get, hier also get(0) aufgerufen</code>  
+<code>petersA[0] = "10" // links vom Gleichheitszeichen wird set, hier also petersA.set(0,10) aufgerufen</code>  
+
+In der Datei IndexingOperatorsOnTreeNode ist ein Beispiel anhand eines Baumes implementiert.   
+**Wichtig:** wie bei der invoke-Funktion müssen auch die get- und die set- Funktion als Operator
+implementiert sein, damit die Zugriffe über die eckigen Klammern funktionieren.  
+Hier ein Auszug aus dem erwähnten TreeNode-Beispiel:  
+<code>operator fun set(index: Int, node: TreeNode<T>) { ... </code>
+bzw.    
+<code>operator fun get(index: Int) {... </code>  
+ 
