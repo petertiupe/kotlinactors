@@ -13,7 +13,7 @@ Code-Checker sowie weitere, heute zum Standard einer Programmiersprache zur Verf
 stehende Tools für die DSL nicht vorhanden sind.
 Eine DSL in Kotlin zu schreiben hat den Vorteil, dass es möglich ist, die DSL nach außen
 wie eine eigene Grammatik aussehen zu lassen, im Innern aber dennoch alle eben genannten Tools
-zur Verfügung zu haben. Wie das funktionieren kann, zeigen die Prgramme in diesem Paket.
+zur Verfügung zu haben. Wie das funktionieren kann, zeigen die Programme in diesem Paket.
 
 ### Operator-Overloading
 Um eine DSL nach außen wie eine eigene Sprache aussehen zu lassen, ist ein erster
@@ -181,4 +181,9 @@ Wenn die Funktion auf der rechten Seite der Tabelle nicht definiert ist
 1. versuche den Code für <code>a = a + b</code> zu erzeugen, dabei wird auch geprüft, dass der Typ von a + b ein Subtyp von a ist.
 
 **Achtung!:** Assignements sind in Kotlin keine Ausdrücke, d.h. man kann die Zuweisung
-nicht an das Ende eines Codeblocks als Rückgabewert schreiben.
+nicht an das Ende eines Codeblocks als Rückgabewert schreiben.  
+  
+### Invocation
+Vals, die einen functional Type repräsentieren bekommen die invoke-Funktion automatisch als eines 
+ihrer Member. Für andere Klassen kann man die Invoke-Funktion als Extension-Function oder auch innerhalb
+einer Klasse definieren.
