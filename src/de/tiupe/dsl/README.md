@@ -230,6 +230,7 @@ Alles was man dafür tun muss, ist eine parameterlose "operator"-Funktion
     fun main(){    
         val myRange = PetersRange(1, 42)    
         val (a,b) = myRange  
+        // Die Range geht von 1 bis 42
         println("Die Range geht von $a bis $b")
     }
  
