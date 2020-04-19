@@ -195,4 +195,8 @@ einer Klasse definieren wie in dem folgenden Beispiel:
 kompiliert der Code nicht mehr.
 Es ist damit dann zum Beispiel möglich Syntax wie den Indexing-Operator ([]) bei Lists, Arrays und Maps auch für
 seine eigenen Klassen zu definieren. Außerdem kann man damit Konstruktoraufrufe, die eigentlich private sind 
-wieder öffentlich machen, aber so, dass im Hintergrund der richtige private Konstruktor aufgerufen wird. 
+wieder öffentlich machen, aber so, dass im Hintergrund der richtige private Konstruktor aufgerufen wird.  
+  
+><code>val petersMap = mapOf("A" to 1, "B" to 2, "X" to 10)</code>  
+><code>println(petersMap("B")) // liefert 2                </code>
+
