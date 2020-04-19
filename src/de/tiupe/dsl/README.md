@@ -213,7 +213,7 @@ In der Datei IndexingOperatorsOnTreeNode ist ein Beispiel anhand eines Baumes im
 **Wichtig:** wie bei der invoke-Funktion müssen auch die get- und die set- Funktion als Operator
 implementiert sein, damit die Zugriffe über die eckigen Klammern funktionieren.  
 Hier ein Auszug aus dem erwähnten TreeNode-Beispiel:  
-<code>operator fun set(index: Int, node: TreeNode<T>) { ... </code>
+<code>operator fun set(index: Int, node: TreeNode<T>) { ... </code>  
 bzw.    
 <code>operator fun get(index: Int) {... </code>  
  
