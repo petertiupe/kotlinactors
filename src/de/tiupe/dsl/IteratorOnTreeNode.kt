@@ -1,11 +1,21 @@
 package de.tiupe.dsl
 
 /**
- * In der Tree-Node - Klasse habe ich für dieses Beispiel die folgende Zeile hinzugefügt:
- * operator fun iterator() = _children.iterator()
+ * Wenn man in der TreeNode-Klasse eine Property für die Variabe _children (children ohne Unterstrich) anlegt,
+ * kann man hier auf diese Variable zugreifen, um die
+ *
+ *      Operator-Function iterator
+ *
+ * anzulegen.
  *
  * Damit hat die Tree-Node-Klasse einen Iterator und man kann hier eine for-Schleife verwenden.
+ *
  */
+
+operator fun TreeNode<String>.iterator() = this.children.iterator()
+
+
+
 
 fun main(){
     val root = TreeNode("Root")

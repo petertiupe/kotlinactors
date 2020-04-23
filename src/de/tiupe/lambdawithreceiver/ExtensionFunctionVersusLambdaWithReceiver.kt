@@ -52,6 +52,18 @@ val addiereZweiZahlen: Int.(Int, Int) -> Int = { a: Int, b: Int ->
 // mit dieser Syntax das Member des Receivers im Body der Funktion zur Verfügung hat.
 // Hier kann man also in der Notation bereits die Variablen Namen vergeben. Syntaktisch ergibt
 // sich dasselbe wie oben, wie man auch unten in dem Funktionsaufruf sieht.
+
+/*
+* Die hier vorgestellte Syntax ist die für eine anonyme Funktion
+* die allgemein so definiert ist:
+*
+*   fun(s: String): Int {
+*       return s.toIntOrNull() ?: 0
+*   }
+*
+* */
+
+// hier nun die anonyme Funktion:
 val sumThree: Int.(Int, Int) -> Int = fun Int.(other: Int, thirdInt): Int {
     return this + other + thirdInt
 }

@@ -7,6 +7,9 @@ package de.tiupe.dsl
 class TreeNode<T>(var data: T) {
     private val _children = arrayListOf<TreeNode<T>>()
 
+    val children
+        get() = this._children
+
 
     var parent: TreeNode<T>? = null
         // Es gibt einen Setter für den Parent, der private ist, weil man den
@@ -27,7 +30,6 @@ class TreeNode<T>(var data: T) {
         node.parent = null
     }
 
-  operator fun iterator() = _children.iterator()
 
 
 
