@@ -10,14 +10,15 @@ import java.util.concurrent.Executors
 * eine Methode aufgerufen und ihr Verhalten untersucht wird.
 * */
 fun main(args: Array<String>) {
-    /* exampleBlocking()
-    exampleBlockingDispatcher()
-    exampleLaunchGlobal()
-    exampleLaunchCoroutineScope()*/
+    // exampleBlocking()
+    // exampleBlockingDispatcher()
+    // exampleLaunchGlobal()
+    // exampleLaunchCoroutineScope()
     exampleWithContext()
 
 }
 
+val x: CoroutineScope.(Int) -> Int = { a: Int -> a + 5 }
 
 suspend fun calculateHardThings(startNum: Int): Int {
     delay(1000)
@@ -162,7 +163,7 @@ fun exampleAsyncAwait() = runBlocking {
 fun exampleWithContext() = runBlocking {
     val startTime = System.currentTimeMillis()
 
-    val result1 = withContext(Dispatchers.Default) { calculateHardThings(10) }
+    val result1 = withContext(Dispatchers.Default) { x(10) }
     val result2 = withContext(Dispatchers.Default) { calculateHardThings(20) }
     val result3 = withContext(Dispatchers.Default) { calculateHardThings(30) }
 
