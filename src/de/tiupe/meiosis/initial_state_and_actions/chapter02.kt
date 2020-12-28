@@ -40,6 +40,7 @@ fun main(){
 * Es fehlt noch etwas, dass die Reihenfolge der Änderungen festlegt. Hier muss man noch davon ausgehen, dass
 * immer der Handler auf dem "richtigen" Objekt aufgerufen wird.
 *
-* Die Lösung an dieser Stelle könnten Streams sein.
+* Die Lösung an dieser Stelle könnten Streams sein. Kotlin hat sich an dieser Stelle entschieden, nicht von
+* Streams zu sprechen, sondern um sich von Java zu unterscheiden, von Sequences.
 *
 * */

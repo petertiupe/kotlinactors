@@ -1,10 +1,9 @@
 package de.tiupe.flows
 
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.runBlocking
-import kotlin.coroutines.coroutineContext
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 /**
  * Hier wird erneut ein Flow erzeugt, indem ein Producer aufgerufen wird.
@@ -12,7 +11,7 @@ import kotlin.coroutines.coroutineContext
  * kann.
  * */
 private val flowA = flow {
-    println("Emitting coroutine -> $coroutineContext")
+    println("Emitting coroutine -> ${currentCoroutineContext()}")
     emit("Tina")
     emit("Inken")
     emit("Lara")
