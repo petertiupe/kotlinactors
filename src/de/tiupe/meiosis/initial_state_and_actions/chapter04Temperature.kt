@@ -1,6 +1,7 @@
 package de.tiupe.meiosis.initial_state_and_actions
 
-typealias Handler = (Temperature) -> Temperature
+typealias TemperatureHandler = (Temperature) -> Temperature
+
 
 /* Einheit für die Temperatur */
 enum class TempUnit(val unit: String) {
@@ -26,9 +27,9 @@ enum class TempUnit(val unit: String) {
 
 data class Temperature(var temperature:Int = 22, var unit: TempUnit = TempUnit.Celsius) {
 
-    var update: Sequence<(Handler)> = emptySequence()
+    var update: Sequence<(TemperatureHandler)> = emptySequence()
 
-    fun addHandler(hdl: Handler) {
+    fun addHandler(hdl: TemperatureHandler) {
         this.update = this.update.plus(hdl)
     }
 
@@ -43,17 +44,17 @@ data class Temperature(var temperature:Int = 22, var unit: TempUnit = TempUnit.C
 }
 
 fun main() {
-    val erhoeheUm3Grad: Handler =  { a ->
+    val erhoeheUm3Grad: TemperatureHandler =  { a ->
         a.temperature = a.temperature + 3
         a
     }
 
-    val erniedrigeUm4Grad : Handler = { a ->
+    val erniedrigeUm4Grad : TemperatureHandler = { a ->
         a.temperature = a.temperature - 4
         a
     }
 
-    val changeUnits: Handler = { a ->
+    val changeUnits: TemperatureHandler = { a ->
         if(a.unit.equals(TempUnit.Celsius)) {
             a.unit = TempUnit.Fahrenheit
             a.temperature = (a.temperature + 32) * 2
