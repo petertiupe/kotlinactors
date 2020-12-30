@@ -13,6 +13,10 @@ package de.tiupe.crossinline
 fun main() {
     multiplyByTwo(5) {
         println("Das Ergebnis ist: $it")
+        /*
+         * Diese return-Anweisung wird zum Fehler, wenn die crossinline Anweisung oben
+         *  weggenommen wird.
+         * */
         return
     }
 }
