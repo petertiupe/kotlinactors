@@ -1,9 +1,9 @@
 package de.tiupe.flows
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.*
-import kotlin.system.*
+import kotlin.system.measureTimeMillis
 
 /**
  * Eine Extension-Function auf dem Flow, sodass man später auf dem Flow

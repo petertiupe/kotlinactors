@@ -1,7 +1,9 @@
 package de.tiupe.flows
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.*
 
 /**
 * Diese Funktion habe ich schon ausführlich in der Definition der Variablen

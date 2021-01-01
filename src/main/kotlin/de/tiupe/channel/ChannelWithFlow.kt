@@ -18,6 +18,8 @@ fun intFlowFunction(): Flow<Int> = flow {
 class ChannelReceiver(val channel: ConflatedBroadcastChannel<Int>)
 
 fun main() = runBlocking {
+
+
     val channel = ConflatedBroadcastChannel<Int>()
 
     // Ein channel sollte mehrere Receiver besitzen können.
