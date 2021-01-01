@@ -52,7 +52,8 @@ fun main() {
 
     // Bleibt die Frage, wie man einen eigenen Scope erzeugt,
     // dazu erzuegt man eine Suspending function:
-    GlobalScope.launch {
+    val myScope = CoroutineScope(Dispatchers.Default)
+    myScope.launch {
         val res = funWithCoroutineScope()
         println("Das Ergebnis ist $res" )
         delay(2)
