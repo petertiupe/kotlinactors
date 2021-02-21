@@ -1,5 +1,9 @@
 plugins {
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.30"
+
+    // needed for the serialization-example
+    kotlin("plugin.serialization") version "1.4.30"
+
 }
 
 
@@ -20,6 +24,9 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json-js
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
+
 }
 
 configure<ApplicationPluginConvention> {
