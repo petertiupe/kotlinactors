@@ -11,6 +11,7 @@ import kotlinx.coroutines.channels.actor
 // Dies ist die Nachricht, die in dem Actor-System ausgetauscht wird.
 // Alle Informationen zwischen den Actors werden über eine Message ausgetauscht, die um
 // abschließend zu sein, von einem bestimmten Typ erbt, mehr ist das hier nicht.
+// Hier steht neuer Testkommentar
 sealed class AccountMessage
 
 // holt den Kontostand, der Übergabeparameter ist der Rückgabewert für die aufrufende Coroutine.
