@@ -19,7 +19,8 @@ package de.tiupe.lambdaasparameter
  *
  * */
 fun main() {
-    val callingClassInstance = ClassCallingCallBack()
+    // init ruft die Funktionalität auf, daher wird der Aufruf benötigt...
+    ClassCallingCallBack()
 }
 
 data class DataModel(val nachname: String, val vorname: String)
@@ -34,6 +35,9 @@ class ClassCallingCallBack {
 
     init {
         toCall.doSomethingDifferent(model)
+        toCall.doSomething("Peter wars"){
+            "${model.vorname} ${model.nachname}"
+        }
     }
 
 }
@@ -50,7 +54,5 @@ class ReceivingClassCallBack<T>(val callback: (T) -> String) {
         println(text)
         return text
     }
-
-
 
 }
