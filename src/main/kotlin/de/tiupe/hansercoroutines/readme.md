@@ -78,3 +78,59 @@ val a = runBlocking{
     // Diese Funktion steht nur in der JVM zur Verfügung, nicht unter JavaScript  
 }
 ```
+
+<p>
+    <i>
+        
+"Der Launch-Builder launch dient dazu, aus einer existierenden Koroutine heraus weitere Koroutinen zu erzeugen. 
+Mit GlobalScope.launch können Sie eine Koroutine im globalen Scope erzeugen. 
+runBlocking wird eingesetzt, um aus einem regulären, eventuell blockierenden Programmablauf in einen Koroutinen-Scope zu wechseln. 
+Erst wenn alle Koroutinen innerhalb von runBlocking vollständig abgearbeitet sind, wird in den regulären Programmablauf 
+zurückgekehrt. Wenn auf die Abarbeitung aller Koroutinen gewartet werden muss, weil etwa noch eine Serverantwort aussteht, 
+dann wird der Thread, der runBlocking aufgerufen hat, blockiert, bis alles erledigt ist."
+
+
+</i>
+Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin." 
+</p>
+
+## Haupt-Thread und Daemon-Thread
+<p>
+    <i>
+        „Die main-Funktion läuft im Haupt-Thread der Anwendung. Es handelt sich also um den Hauptablaufstrang der Anwendung. 
+        Wenn runBlocking in diesem Thread aufgerufen wird, dann blockiert dieser Thread, bis alle darin gestarteten 
+        Koroutinen abgearbeitet sind. Sobald der Haupt-Thread beendet ist, endet auch das Programm.
+        Bei den Threads aus dem globalen Scope handelt es sich um sogenannte Daemon-Threads, die nur solange laufen, 
+        wie der Haupt-Thread läuft. Dies ist ein Unterschied zu selbst erzeugten Threads. Wenn man z. B. mit Thread() 
+        einen eigenen Thread erzeugt und diesen startet, dann läuft das Programm solange, bis auch dieser Thread 
+        abgearbeitet ist. In Java war diese Art der schwergewichtigen Thread-Erzeugung üblich. Sie hat aber den Nachteil, 
+        dass ein Programm weiterläuft, selbst wenn der Haupt-Thread schon lange beendet ist. Dies ist eine typische Fehlerquelle.
+        Mit Koroutinen haben Sie mehr Sicherheit. Wenn der Haupt-Thread beendet ist, dann ist auch Ihr Programm beendet.“
+    </i>
+
+Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin." 
+</p>
+
+## Der Job um Abläufe zu synchronisieren
+join unterbricht die Ausführung des aktuellen Codes, bis der Job erledigt ist. Der job ist das Objekt, das die Ausführung
+des Arbeitsauftrags repräsentiert.
+```kotlin    
+val firstJob = GlobalScope.launch {
+        ...
+    }
+firstJob.join()
+```
+
+Möchte man von einem asynchronen Prozess auch einen Wert zurückerhalten, so gibt es dafür die async - Funktion 
+```kotlin 
+runBlocking {
+    // berechne sei eine lang andauerde Berechnung...
+    val a = async { berechne(12) }
+    val b = async { berechne(13) }
+    val ergebnis = a.await() + b.await()
+}   
+val firstValue = GlobalScope.async{
+        ...
+    }
+firstJob.join()
+```
