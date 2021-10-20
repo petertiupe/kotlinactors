@@ -55,3 +55,13 @@ Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“
 Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“        
 </p>
 
+## Korutinen Scopes
+<p>Der Koroutinen Scope stellt einen Gültigkeitsbereich für eine Koroutine zur Verfügung.
+   In einem Scope arbeiten alle Koroutinen als kooperierende Einheit zusammen.
+   Den Global-Scope sollte man nur mit Vorsicht nutzen, im Fehlerfall kann ansonsten das ganze Programm abbrechen
+   und nicht nur wie evtl. gewünscht alle Koroutinen in einem bestimmten Scope.
+</p>
+    
+```kotlin    
+val a = GlobalScope.launch { println("Eine Koroutine wird im Global-Scope gestartet ...") }
+```
