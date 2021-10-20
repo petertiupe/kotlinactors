@@ -61,7 +61,20 @@ Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“
    Den Global-Scope sollte man nur mit Vorsicht nutzen, im Fehlerfall kann ansonsten das ganze Programm abbrechen
    und nicht nur wie evtl. gewünscht alle Koroutinen in einem bestimmten Scope.
 </p>
-    
+
+## Korutinen Builder
 ```kotlin    
 val a = GlobalScope.launch { println("Eine Koroutine wird im Global-Scope gestartet ...") }
+```
+<p>runBlocking steht sowohl im Global Scope als auch direkt in der main-Funktion zur Verfügung. Läuft runBlocking im 
+   GlobalScope, wird die Ausführung an einen Worker-Thread weitergegeben, läuft runBlocking direkt in der main-Funktion,
+   erfolgt die Ausführung auf dem main-Thread. Man hat damit also eine Möglichkeit, das Programm so lange ausführen zu
+   lassen, bis alle nebenläufigen Tasks ausgeführt sind.
+</p>
+
+```kotlin    
+val a = runBlocking{
+    println("... startet eine Koroutine im selben Scope und wartet, bis alle Anweisungen dahinter abgearbeitet sind") 
+    // Diese Funktion steht nur in der JVM zur Verfügung, nicht unter JavaScript  
+}
 ```
