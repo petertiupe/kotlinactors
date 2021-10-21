@@ -173,4 +173,34 @@ dass die Aufrufe von doSomeCalculation nacheinander abläuft. Mich lässt das zu
 
 ###### Innerhalb einer Koroutine werden alle suspending-Functions sequenziell abgearbeitet. Möchte man eine parallele Verarbeitung erreichen, muss man zwei Koroutinen starten, in dem obigen Fall mit launchn oder async. 
 
+### Auslagerung langläufiger Berechnungen
+Die folgende suspending Function würde in einem Programm nie unterbrochen, da sie in der Funktion selbst keinen
+unterbrechenden Teil enthält. Die Gefahr ist nun, wenn eine solche Funktion auf dem Main-Thread aufgerufen wird, dass
+dann der Main-Thread "steht". Um dies zu umgehen kann man das Muster des folgenden Beispiels verwenden:
 
+```kotlin
+suspend fun langDauerndeBerechnung(): Int {
+    val asyncResult = GlobalScope.async {
+        var res = 0
+        repeat(999_999_999) {
+            res = it *10 + 3 / (it + 2)
+        }
+        res
+    }
+    return asyncResult.await()
+}
+
+fun main(){
+    println("Start des Programms")
+    runBlocking {
+        println("Ergebnis der Berechnung: ${langDauerndeBerechnung()}")
+    }
+    println("Ende des Programms")
+}
+```
+Der Trick besteht darin, dass innerhalb der suspending-Function ein Worker-Thread gestartet wird, sodass der main-Thread
+gar nicht geblockt werden kann.
+
+## Koroutinen-Dispatcher
+Wenn man steuern möchte, auf welchem Thread eine Koroutine läuft, kann man dem launch oder async-Befehl einen 
+Koroutinen-Kontext mitgeben. Dieser hat einen Dispatcher, der die Koroutinen auf die Threads verteilt.
