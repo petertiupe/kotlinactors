@@ -171,6 +171,6 @@ Im folgenden Abschnitt wird die Funktion innerhalb einer Koroutine 2 Mal verwend
 Wenn man die Laufzeit dieses Programms betrachtet oder sich die Ausgabe im Debugger anschaut, wird deutlich,
 dass die Aufrufe von doSomeCalculation nacheinander abläuft. Mich lässt das zu dem folgenden Merksatz kommen:
 
-###### Innerhalb einer Koroutine werden alle suspending-Functions sequenziell abgearbeitet. Möchte maneine parallele Verarbeitung erreichen, dann muss man zwei Koroutinen starten, in dem obigen Fall mit launchn oder async. 
+###### Innerhalb einer Koroutine werden alle suspending-Functions sequenziell abgearbeitet. Möchte man eine parallele Verarbeitung erreichen, muss man zwei Koroutinen starten, in dem obigen Fall mit launchn oder async. 
 
 
