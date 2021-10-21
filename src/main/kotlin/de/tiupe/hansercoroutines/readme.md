@@ -134,3 +134,43 @@ val firstValue = GlobalScope.async{
     }
 firstJob.join()
 ```
+
+## Suspending Functions
+Bei den suspending Function fand ich es am schwierigsten, zu entscheiden, ob beim Aufruf einer suspending 
+Function die nächste suspending Funktion im selben Algorithmus dann trotzdem aufgerufen wird. Der folgende 
+Programmabschnitt zeigt und erklärt die Frage. Gegeben ist die folgende Funktion, die eine komplizierte
+Berechnung simuliert:
+```kotlin
+ suspend fun doSomeCalculation(a: Int, b: Int, function: (Int, Int) -> Int): Int {
+    delay(2000)
+    return function(a, b)
+}
+```
+Der Delay-Aufruf soll lediglich den langen Lauf des Programms simulieren.
+
+Im folgenden Abschnitt wird die Funktion innerhalb einer Koroutine 2 Mal verwendet.
+
+```kotlin
+ launch {
+            val a = 5
+            val b = 7
+            val sum = doSomeCalculation(a, b) { x, y ->
+                x + y
+            }
+            val diff = doSomeCalculation(a, b) { x, y ->
+                y - x
+            }
+            val bothTogether = doSomeCalculation(diff, sum) { x, y ->
+                x + y
+            }
+            println("Summe: $sum, Differenz: $diff und Summe aus beiden ist: $bothTogether")
+        }
+
+```
+
+Wenn man die Laufzeit dieses Programms betrachtet oder sich die Ausgabe im Debugger anschaut, wird deutlich,
+dass die Aufrufe von doSomeCalculation nacheinander abläuft. Mich lässt das zu dem folgenden Merksatz kommen:
+
+###### Innerhalb einer Koroutine werden alle suspending-Functions sequenziell abgearbeitet. Möchte maneine parallele Verarbeitung erreichen, dann muss man zwei Koroutinen starten, in dem obigen Fall mit launchn oder async. 
+
+
