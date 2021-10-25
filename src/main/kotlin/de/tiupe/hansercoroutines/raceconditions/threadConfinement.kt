@@ -2,6 +2,13 @@ package de.tiupe.hansercoroutines.raceconditions
 
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.*
+/**
+ *  Das folgende Beispiel ist dem Buch
+ *  Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite>
+ *  erschienen im Hanser-Verlag
+ *  entnommen.
+ *
+ * */
 
 fun main(){
     runBlocking {
