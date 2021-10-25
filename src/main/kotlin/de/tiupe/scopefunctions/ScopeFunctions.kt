@@ -1,20 +1,6 @@
 package de.tiupe.scopefunctions
 
-/**
- * Es gibt in Kotlin fünf sogenannte Scope-Functions:
- *
- *      with
- *      run
- *      let
- *      apply
- *      also
- *
- * Am einfachsten erklären sie sich durch ihre Signaturen:
- *
- *      public inline fun <T, R> with(receiver: T, block: T.() -> R): R
- *
- *
- * */
+
 
 fun main(args: Array<String>) {
     // also:    inline fun T.also (block: (T)  -> Unit): T
