@@ -19,7 +19,7 @@ Der Begriff der parallelen Ausführung ist also strenger gefasst als die Nebenl�
         also parallel, ausgeführt werden.“
     </i>
 
-Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“
+Auszug aus: Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite>
 </p>
 
 ## Koroutinen und Threads Ähnlichkeiten und Unterschiede
@@ -52,7 +52,7 @@ Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“
         Ressourcen als ein Thread, und das Zusammenspiel der Koroutinen geschieht kooperativ.“
     </i>
 
-Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“        
+Auszug aus: Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite>     
 </p>
 
 ## Korutinen Scopes
@@ -108,7 +108,7 @@ Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin."
         Mit Koroutinen haben Sie mehr Sicherheit. Wenn der Haupt-Thread beendet ist, dann ist auch Ihr Programm beendet.“
     </i>
 
-Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin." 
+Auszug aus: Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite> 
 </p>
 
 ## Der Job um Abläufe zu synchronisieren
@@ -204,7 +204,7 @@ gar nicht geblockt werden kann.
 ## Koroutinen-Dispatcher
 Wenn man steuern möchte, auf welchem Thread eine Koroutine läuft, kann man dem launch oder async-Befehl einen 
 Koroutinen-Kontext mitgeben. Dieser hat einen Dispatcher, der die Koroutinen auf die Threads verteilt.
-****
+
 ## Race-Conditions
 Bei den Race-Conditions geht es um die nebenläufigen Zugriffe auf eine Variable, die mindestens zwei Threads oder zwei 
 Koroutinen gleichzeitig zur Verfügung steht.
@@ -218,8 +218,15 @@ Koroutinen gleichzeitig zur Verfügung steht.
         das Betriebssystem.“
 </i>
 
-Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“
+Auszug aus: Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite>
 </p>
+
+Möglichkeiten für atomare Operationen zu sorgen sind die folgenden:
+<ul>
+    <li>Threadsichere Typen</li>
+    <li>Thread-Confinement (Thred-Beschränkung / Einengung)</li>
+    <li>Markieren kritischer Abschnitte (Mutex)</li>
+</ul>
 
 ### Threadsichere Typen
 Schon in Java gibt es zur threadsicheren Programmierung atomare Datentypen. Diese stellen inhärent sicher, dass sie 
@@ -227,4 +234,40 @@ threadsicher verändert werden.
 
 ![img.png](atomicJavaTypes.png)
 
+### Thread-Confinement
+Beim Thread-Confinement sorgt man programmatisch dafür, dass immer nur derselbe Thread verändernd auf die
+Variablen zugreifen darf. Dies erreicht man durch den Coroutine-Builder withContext. Hier der Auszug aus dem Buch:
 
+<p>
+    <i>
+        „Die Funktion withContext ist ein weiterer Coroutine Builder. 
+        Ihr wird ein Codeblock übergeben, der von einem festgelegten Dispatcher ausgeführt werden soll. 
+        Nach Ausführung des Codeblocks wird der ursprüngliche Dispatcher des Coroutine Contexts wieder verwendet, 
+        um den verbleibenden Code auszuführen. Wenn also z. B. vorher Dispatchers. IO verwendet wurde, dann wird nach 
+        Ausführung des Codes, der an withContext übergeben wurde, wieder auf Dispatchers. IO gewechselt.“
+</i>
+
+Auszug aus: Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite>
+</p>
+
+Lässt man das folgende Programm ohne die auskommentierten Zeilen laufen, ist es nicht threadsicher und liefert eine 
+Ausgabe wie die darunter stehende:
+
+![img.png](threadConfinement.png)
+
+```log
+Gespart wurden 20000 Euro
+Gespart wurden 20000 Euro
+Gespart wurden 19083 Euro
+Gespart wurden 17906 Euro
+Gespart wurden 18865 Euro
+Gespart wurden 18745 Euro
+Gespart wurden 19975 Euro
+Gespart wurden 19807 Euro
+```
+
+Mit den auskommentierten Zeilen dagegen, werden die Zugriffe auf die money-Variable nur durch den moneyThreadContext
+durchgeführt und das Programm ist threadsicher. Das Programm ist hier zu finden
+
+[Programmcode](./raceconditions/threadConfinement.kt)
+     
