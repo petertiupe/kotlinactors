@@ -204,3 +204,27 @@ gar nicht geblockt werden kann.
 ## Koroutinen-Dispatcher
 Wenn man steuern möchte, auf welchem Thread eine Koroutine läuft, kann man dem launch oder async-Befehl einen 
 Koroutinen-Kontext mitgeben. Dieser hat einen Dispatcher, der die Koroutinen auf die Threads verteilt.
+****
+## Race-Conditions
+Bei den Race-Conditions geht es um die nebenläufigen Zugriffe auf eine Variable, die mindestens zwei Threads oder zwei 
+Koroutinen gleichzeitig zur Verfügung steht.
+
+### Definition Atomare Operation
+<p>
+    <i>
+        „Eine atomare Operation wird stets vollständig und als Ganzes ausgeführt. Sie kann aus einzelnen Operationen 
+        bestehen, die aber stets als logische Einheit betrachtet und untrennbar voneinander ausgeführt werden. 
+        Eine Unterbrechung der atomaren Operation ist von außen nicht möglich, auch nicht präemptiv durch 
+        das Betriebssystem.“
+</i>
+
+Auszug aus: Christian Kohls. „Programmieren lernen mit Kotlin.“
+</p>
+
+### Threadsichere Typen
+Schon in Java gibt es zur threadsicheren Programmierung atomare Datentypen. Diese stellen inhärent sicher, dass sie 
+threadsicher verändert werden.
+
+![img.png](atomicJavaTypes.png)
+
+
