@@ -287,4 +287,4 @@ suspend fun functionUsingMutex() {
 }
 ```
 
-Man kann ein Mutex-Objekt auch per Hand mit ```lock()``` sperren und mit ```unlock()```entsperren.
+Man kann ein Mutex-Objekt auch per Hand mit ```lock()``` sperren und mit ```unlock()``` entsperren.
