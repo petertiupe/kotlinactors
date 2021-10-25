@@ -271,3 +271,20 @@ durchgeführt und das Programm ist threadsicher. Das Programm ist hier zu finden
 
 [Programmcode](./raceconditions/threadConfinement.kt)
      
+###  Markieren kritischer Abschnitte (Mutex)
+Bei einem Mutex können verschiedene Threads einen kritischen Abschnitt nutzen, der Mutex verhindert allerdings die
+gleichzeitige Nutzung. Wichtig ist bei Zugriffen, die durch einen Mutex geschützt sind, dass sowohl der lesende als
+auch der schreibende Zugriff durch den Mutex geschützt werden. Nur so ist sichergestellt, dass nicht ein Thread liest,
+während ein anderer schreibt.
+
+```kotlin
+private val MyMutex = Mutex()
+
+suspend fun functionUsingMutex() {
+    MyMutex.withLock() {
+        // hier steht der Zugriff auf die geschützte Variable ...
+    }
+}
+```
+
+Man kann ein Mutex-Objekt auch per Hand mit ```lock()``` sperren und mit ```unlock()```entsperren.
