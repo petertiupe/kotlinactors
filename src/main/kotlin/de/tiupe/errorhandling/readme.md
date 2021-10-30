@@ -75,4 +75,34 @@ Nullable-Objects gegangen, allerdings ist die Option bei den Higher-Order-Functi
 Die ```mittelwert```-Funktion in der genannten Klasse ist ein Beispiel für eine Higher-Order-Function, die ohne
 Fehlerhandling auskommt.
 
+#### Either als weitere Lösung
+Neben der Möglichkeit, ```Optional```s zurückzugeben, statt Fehler zu werfen, hat man noch die Möglichkeit das von Scala
+bekannte ```Either``` zu benutzen. Nutzt man Option, erfährt man nichts über den Hintergrund, was bei dem Aufruf einer Funktion
+evtl. fehlerhaft gewesen ist, manchmal möchte man mehr wissen, dann kann man ```Either```  nutzen. ```Either``` kennt wie
+```Option``` zwei Zustände, nur dass bei ```Either``` beide Zustände Inhalt mit sich führen, die von unterschiedlichem
+Typ sein können. Die Datei [Either](./Either.kt) zeigt den dazugehörigen Code. Oftmals wird Right als der korrekte
+Zustand und Left als der fehlerbahaftete Zustand angesehen. Der folgende Code zeigt beispielhaft die Verwendung:
+```kotlin
+    fun mittelwert(xs: List<Int>): Either<String, Double> =
+        if (xs.isEmpty())
+            Left("Eine leere Liste hat keinen Mittelwert")
+        else 
+            Right(xs.sum() / xs.size())
+```
+Dieselbe Funktion kann man natürlich auch mit ```Option``` realisieren, allerdings steht dann keine Information zur
+Verfügung, warum im ersten Teil der Funktion ```None``` zurückgegeben wird:
+```kotlin
+    fun mittelwert(xs: List<Int>): Option<Double> =
+        if (xs.isEmpty())
+            None
+        else 
+            Some(xs.sum() / xs.size())
+```
 
+## Zusammenfassung
+Das Werfen von Fehler
+<ul>
+    <li>widerspricht der referentiellen Integrität</li>
+    <li>sollte auf Situationen beschränkt werden, in denen kein vernünftiges Objekt zurückgegeben werden kann</li>
+    <li>kann durch die oben gezeigten Daten-Typen weitestgehend vermieden werden</li>
+</ul>
