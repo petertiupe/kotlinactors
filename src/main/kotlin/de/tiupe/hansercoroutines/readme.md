@@ -42,8 +42,17 @@ Auszug aus: Christian Kohls. <cite>„Programmieren lernen mit Kotlin.“</cite>
       suspending Functions verwenden, Koroutinen und suspending Functions sind aber nicht dasselbe...
 </b></u>
 
-### Definition Koroutine
+Koroutinen sind Algorithmen, die in einem Thread laufen. Wenn eine Koroutine unterbrochen wird, kann der Algorithmus
+unterbrochen werden und von dem Thread entfernt werden. In der Zwischenzeit kann der Thread weitere Aufgaben übernehemen
 
+![img.png](coroutine.gif)
+
+GIF entnommen aus: 
+<cite>
+    https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/04_Suspend
+</cite>
+
+### Definition Koroutine
 <p>
     <i>
         „Eine Koroutine ist ein unabhängig ausführbarer Algorithmus. Mehrere Koroutinen können nebenläufig und parallel 
