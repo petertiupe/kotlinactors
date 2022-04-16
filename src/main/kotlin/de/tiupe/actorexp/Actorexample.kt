@@ -96,7 +96,6 @@ private suspend fun SendChannel<AccountMessage>.printBalance( name: String ) {
 fun main() {
     runBlocking {
         // Zunächst wird sich ein "SendChannel" geholt und mit einer initialBalance versehen.
-        @ObsoleteCoroutinesApi
         val manager = accountManager(initialBalance = 3000L)
 
         // Damit die folgenden Aufrufe nicht blockend sind, wird jeweils ein einzelner launch aufgerufen,
