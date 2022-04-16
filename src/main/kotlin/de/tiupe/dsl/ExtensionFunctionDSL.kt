@@ -63,8 +63,6 @@ fun main(){
     // einfachster Aufruf
     val simple = typesafeint {
         intValue = 3
-        // zeigt die Arbeitsweise von apply, der neue Wert ist 4
-        apply { intValue = 4 }
     }
 
     println(simple.intValue.toString())
