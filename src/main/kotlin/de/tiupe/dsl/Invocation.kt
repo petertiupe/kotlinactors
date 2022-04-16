@@ -12,6 +12,8 @@ package de.tiupe.dsl
  * */
 operator fun <K, V> Map<K, V>.invoke(key: K) = get(key)
 
+operator fun <K, V> Map<K, V>.invoke(key: K, value: V) = this.plus(key to value)
+
 /**
  * Die main-Funktion zeigt, wie die invoke - Funktion ähnlich zu der
  * Scala-apply-Funktion dazu genutzt werden kann, einen Aufruf
@@ -22,6 +24,8 @@ operator fun <K, V> Map<K, V>.invoke(key: K) = get(key)
  * */
 fun main () {
     val petersMap = mapOf("I" to 1, "V" to 5, "X" to 10)
+    val newMap = petersMap("NewKey", 20)
     println(petersMap("V")) // 5
     println(petersMap("L")) // null
+    println(newMap("NewKey")) // 20
 }
