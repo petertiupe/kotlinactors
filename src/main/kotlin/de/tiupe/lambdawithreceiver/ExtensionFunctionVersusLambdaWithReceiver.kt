@@ -96,7 +96,6 @@ fun main(){
     println("Als Extension Function erhält man dasselbe Ergebnis: $extensionResult")
 
 
-
     /* Wie man sieht, ist sowohl das Ergebnis der letzten beiden Aufrufe als auch die Syntax beim
     *  Aufruf dieselbe. Diese Erkenntnis liefert auch die Dokumentation:
     *
