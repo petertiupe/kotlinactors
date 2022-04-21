@@ -1,11 +1,11 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
+
 
 plugins {
     application
-    kotlin("jvm") version "1.4.30"
+    kotlin("jvm") version "1.6.20"
 
     // needed for the serialization-example
-    kotlin("plugin.serialization") version "1.4.30"
+    kotlin("plugin.serialization") version "1.6.10"
 
 
 
@@ -36,7 +36,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json-js
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     // https://mvnrepository.com/artifact/org.openjfx/javafx
     implementation("no.tornado:tornadofx:1.7.20")
     implementation("io.ktor:ktor-server-core:1.5.1")
